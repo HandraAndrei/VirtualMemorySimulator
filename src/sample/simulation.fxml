@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+<GridPane fx:controller="sample.SimulationController"
+          xmlns:fx="http://javafx.com/fxml"
+          prefHeight="500.0" prefWidth="500.0" alignment="TOP_CENTER" hgap="10" vgap="30" gridLinesVisible="false">
+    <padding>
+        <Insets top="40" left="40" right="40" bottom="40"/>
+    </padding>
+    <Label text = "Select the operations:" GridPane.rowIndex="0"  GridPane.columnIndex="0" GridPane.columnSpan="3" textFill="blue">
+        <font>
+            <Font name ="Arial Bold" size="15"/>
+        </font>
+    </Label>
+    <Label fx:id="ramSize" GridPane.rowIndex="0"  GridPane.columnIndex="4" GridPane.columnSpan="3" textFill="blue">
+        <font>
+            <Font name ="Arial Bold" size="15"/>
+        </font>
+    </Label>
+    <HBox GridPane.rowIndex="1" GridPane.columnIndex="0" GridPane.columnSpan="5" spacing="5">
+        <Button fx:id="findButton" onAction="#onButtonClicked" text="Find" style="-fx-background-color:green;-fx-text-fill: black" prefWidth="120">
+            <font>
+                <Font name="Arial bold" size="20"/>
+            </font>
+        </Button>
+        <Button  fx:id="writeButton" onAction="#onButtonClicked" text="Write" style="-fx-background-color:green;-fx-text-fill: black" prefWidth="120">
+            <font>
+                <Font name="Arial bold" size="20"/>
+            </font>
+        </Button>
+        <Button fx:id ="replaceButton" onAction="#onButtonClicked" text="Replace" style="-fx-background-color:green;-fx-text-fill: black" prefWidth="120">
+            <font>
+                <Font name="Arial bold" size="20"/>
+            </font>
+        </Button>
+        <Button fx:id="readButton" onAction="#onButtonClicked" text="Read" style="-fx-background-color:green;-fx-text-fill: black" prefWidth="120">
+            <font>
+                <Font name="Arial bold" size="20"/>
+            </font>
+        </Button>
+    </HBox>
+    <Label fx:id="enterPageNumber" GridPane.rowIndex="2"  GridPane.columnIndex="0"  GridPane.columnSpan="2" textFill="blue" visible="false">
+        <font>
+            <Font name ="Arial Bold" size="15"/>
+        </font>
+    </Label>
+    <Label fx:id="enterOffset" text="Offset between 0 and 4096" GridPane.rowIndex="3"  GridPane.columnIndex="0"  GridPane.columnSpan="2" textFill="blue" visible="false">
+        <font>
+            <Font name ="Arial Bold" size="15"/>
+        </font>
+    </Label>
+
+    <TextField fx:id="pageNumber" GridPane.rowIndex="2" GridPane.columnIndex="2" visible="false"
+               style="-fx-border-color: red; -fx-border-width: 3;-fx-border-style: solid;-fx-text-fill: red">
+        <font>
+            <Font name ="Arial Bold" size="15"/>
+        </font>
+    </TextField>
+
+    <TextField fx:id="offset" GridPane.rowIndex="3" GridPane.columnIndex="2" visible="false"
+               style="-fx-border-color: red; -fx-border-width: 3;-fx-border-style: solid;-fx-text-fill: red">
+        <font>
+            <Font name ="Arial Bold" size="15"/>
+        </font>
+    </TextField>
+
+    <Label fx:id="enterValue" text="Value to be written" GridPane.rowIndex="4"  GridPane.columnIndex="0"  GridPane.columnSpan="2" textFill="blue" visible="false">
+        <font>
+            <Font name ="Arial Bold" size="15"/>
+        </font>
+    </Label>
+    <TextField fx:id="value" GridPane.rowIndex="4" GridPane.columnIndex="2" visible="false"
+               style="-fx-border-color: red; -fx-border-width: 3;-fx-border-style: solid;-fx-text-fill: red">
+        <font>
+            <Font name ="Arial Bold" size="15"/>
+        </font>
+    </TextField>
+
+    <Button GridPane.rowIndex="5" GridPane.columnIndex="2" onAction="#onButtonClicked"  fx:id="proceed" text="Proceed" visible="false" style="-fx-background-color:green;-fx-text-fill: black" prefWidth="120">
+        <font>
+            <Font name="Arial bold" size="20"/>
+        </font>
+    </Button>
+    <Label fx:id="error"  GridPane.rowIndex="6"  GridPane.columnIndex="2" visible="false" GridPane.columnSpan="2" textFill="blue">
+        <font>
+            <Font name ="Arial Bold" size="15"/>
+        </font>
+    </Label>
+    <Label fx:id="find"  GridPane.rowIndex="6"  GridPane.columnIndex="2" visible="false" GridPane.columnSpan="2" textFill="blue">
+        <font>
+            <Font name ="Arial Bold" size="15"/>
+        </font>
+    </Label>
+    <Label fx:id="read"  GridPane.rowIndex="6"  GridPane.columnIndex="2" visible="false" GridPane.columnSpan="2" textFill="blue">
+        <font>
+            <Font name ="Arial Bold" size="15"/>
+        </font>
+    </Label>
+    <Button GridPane.rowIndex="6" GridPane.columnIndex="0" onAction="#onButtonClicked"  fx:id="clear" text="Clear" visible="false" style="-fx-background-color:green;-fx-text-fill: black" prefWidth="120">
+        <font>
+            <Font name="Arial bold" size="20"/>
+        </font>
+    </Button>
+
+    <HBox fx:id="hBox" GridPane.rowIndex="3" GridPane.columnIndex="0" GridPane.columnSpan="5" spacing="5" visible="false">
+        <Button fx:id="randomButton" onAction="#onButtonClicked" text="Random" style="-fx-background-color:green;-fx-text-fill: black" prefWidth="120">
+            <font>
+                <Font name="Arial bold" size="20"/>
+            </font>
+        </Button>
+        <Button  fx:id="lfuButton" onAction="#onButtonClicked" text="LFU" style="-fx-background-color:green;-fx-text-fill: black" prefWidth="120">
+            <font>
+                <Font name="Arial bold" size="20"/>
+            </font>
+        </Button>
+        <Button fx:id ="mfuButton" onAction="#onButtonClicked" text="MFU" style="-fx-background-color:green;-fx-text-fill: black" prefWidth="120">
+            <font>
+                <Font name="Arial bold" size="20"/>
+            </font>
+        </Button>
+        <Button fx:id="fifoButton" onAction="#onButtonClicked" text="FIFO" style="-fx-background-color:green;-fx-text-fill: black" prefWidth="120">
+            <font>
+                <Font name="Arial bold" size="20"/>
+            </font>
+        </Button>
+        <Button fx:id="lruButton" onAction="#onButtonClicked" text="LRU" style="-fx-background-color:green;-fx-text-fill: black" prefWidth="120">
+            <font>
+                <Font name="Arial bold" size="20"/>
+            </font>
+        </Button>
+    </HBox>
+
+    <Label fx:id="writeStep1"  GridPane.rowIndex="7"  GridPane.columnIndex="0" visible="false" GridPane.columnSpan="5" textFill="blue">
+        <font>
+            <Font name ="Arial Bold" size="15"/>
+        </font>
+    </Label>
+    <Label fx:id="writeStep2"  GridPane.rowIndex="8"  GridPane.columnIndex="0" visible="false" GridPane.columnSpan="5" textFill="blue">
+        <font>
+            <Font name ="Arial Bold" size="15"/>
+        </font>
+    </Label>
+    <Label fx:id="writeStep3"  GridPane.rowIndex="9"  GridPane.columnIndex="0" visible="false" GridPane.columnSpan="5" textFill="blue">
+        <font>
+            <Font name ="Arial Bold" size="15"/>
+        </font>
+    </Label>
+    <Label fx:id="writeStep4"  GridPane.rowIndex="10"  GridPane.columnIndex="0" visible="false" GridPane.columnSpan="5" textFill="blue">
+        <font>
+            <Font name ="Arial Bold" size="15"/>
+        </font>
+    </Label>
+
+    <Label  GridPane.rowIndex="1"  GridPane.columnIndex="6" text="Memory:" visible="true" GridPane.columnSpan="1" textFill="blue">
+        <font>
+            <Font name ="Arial Bold" size="15"/>
+        </font>
+    </Label>
+
+    <Label  GridPane.rowIndex="4"  GridPane.columnIndex="6" text="Page Table:" visible="true" GridPane.columnSpan="1" textFill="blue">
+        <font>
+            <Font name ="Arial Bold" size="15"/>
+        </font>
+    </Label>
+
+    <Label  GridPane.rowIndex="10"  GridPane.columnIndex="6" text="Storage:" visible="true" GridPane.columnSpan="1" textFill="blue">
+        <font>
+            <Font name ="Arial Bold" size="15"/>
+        </font>
+    </Label>
+
+    <Label  GridPane.rowIndex="7"  GridPane.columnIndex="6" text="TLB:" visible="true" GridPane.columnSpan="1" textFill="blue">
+        <font>
+            <Font name ="Arial Bold" size="15"/>
+        </font>
+    </Label>
+
+    <TableView fx:id="memoryTable" GridPane.rowIndex="1" GridPane.columnIndex="7" GridPane.columnSpan="3" GridPane.rowSpan="3" visible="true" prefWidth="500">
+
+    </TableView>
+
+    <TableView fx:id="pageTableView" GridPane.rowIndex="4" GridPane.columnIndex="7" GridPane.columnSpan="3" GridPane.rowSpan="3" visible="true" prefWidth="500">
+
+    </TableView>
+
+    <TableView fx:id="storageTable" GridPane.rowIndex="10" GridPane.columnIndex="7" GridPane.columnSpan="3" GridPane.rowSpan="2" visible="true" prefWidth="500">
+
+    </TableView>
+
+    <TableView fx:id="tlbView" GridPane.rowIndex="7" GridPane.columnIndex="7" GridPane.columnSpan="3" GridPane.rowSpan="3" visible="true" prefWidth="500">
+
+    </TableView>
+
+
+</GridPane>
